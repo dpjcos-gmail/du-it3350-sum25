@@ -202,6 +202,7 @@
             }
 
             // Update UI to show a loading state
+            //debugger;
             currentPriceSpan.textContent = '...';
             openPriceSpan.textContent = '...';
             highPriceSpan.textContent = '...';
@@ -209,8 +210,14 @@
             changeSpan.textContent = '...';
             displayTicker.textContent = stockSymbol;
 
-            const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockSymbol}&interval=5min&apikey=${apiKey}`;
+            console.log(`Fetching data for stock symbol: ${stockSymbol}`);
+            console.log(`Using API Key: ${apiKey}`);
 
+
+            const apiUrl = `https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=${stockSymbol}&interval=5min&apikey=${apiKey}`;
+            
+            console.log(`Fetching data from: ${apiUrl}`);
+            
             try {
                 const response = await fetch(apiUrl);
                 if (!response.ok) {
